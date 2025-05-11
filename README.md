@@ -28,31 +28,38 @@
       z-index: 1000;
     }
 
-    #logo {
-      text-align: right;
-      flex-grow: 1;
-    }
-
     #logo img {
-      height: 50px;
+      height: 70px;
+      width: 70px;
+      border-radius: 50%;
+      border: 2px solid #00ff66;
+      box-shadow: 0 0 10px #00ff66aa;
     }
 
     #scores {
       font-size: 16px;
       white-space: nowrap;
+      color: #00ff66;
+      font-weight: bold;
     }
 
     h1 {
-      margin-top: 70px;
+      margin-top: 100px;
       color: #00ff66;
       text-shadow: 0 0 5px #00ff66;
+    }
+
+    #game-wrapper {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 20px;
+      margin: 20px;
     }
 
     canvas {
       border: 2px solid #00ff66;
       background-color: #111;
-      display: block;
-      margin: 20px auto;
       box-shadow: 0 0 15px #00ff66;
       border-radius: 8px;
     }
@@ -79,13 +86,16 @@
   <div id="top-bar">
     <div id="scores">Score: 0 | High Score: 0</div>
     <div id="logo">
-      <img src="https://p16-sign-sg.tiktokcdn.com/tos-alisg-avt-0068/9031ca2f16dda1768a0eb91364a12d4e~tplv-tiktokx-cropcenter:1080:1080.jpeg?dr=14579&refresh_token=7aa169b2&x-expires=1747144800&x-signature=wUqfhJDbc17P2Cgj5YaRJLfwap0%3D&t=4d5b0474&ps=13740610&shp=a5d48078&shcp=81f88b70&idc=maliva" alt="Sponsor Logo" />
+      <img src="https://p16-sign-sg.tiktokcdn.com/tos-alisg-avt-0068/9031ca2f16dda1768a0eb91364a12d4e~tplv-tiktokx-cropcenter:1080:1080.jpeg?..." alt="Logo" />
     </div>
-    <div style="width: 100px;"></div> <!-- Placeholder for spacing -->
   </div>
 
   <h1>Snake Game</h1>
-  <canvas id="gameCanvas" width="400" height="400"></canvas>
+
+  <div id="game-wrapper">
+    <canvas id="gameCanvas" width="400" height="400"></canvas>
+  </div>
+
   <button id="retry">Retry</button>
 
   <script>
@@ -189,26 +199,21 @@
     document.addEventListener('keydown', event => {
       const key = event.key.toLowerCase();
       if ((key === 'arrowup' || key === 'w') && dy === 0) {
-        dy = -1;
-        dx = 0;
+        dy = -1; dx = 0;
       }
       if ((key === 'arrowdown' || key === 's') && dy === 0) {
-        dy = 1;
-        dx = 0;
+        dy = 1; dx = 0;
       }
       if ((key === 'arrowleft' || key === 'a') && dx === 0) {
-        dy = 0;
-        dx = -1;
+        dy = 0; dx = -1;
       }
       if ((key === 'arrowright' || key === 'd') && dx === 0) {
-        dy = 0;
-        dx = 1;
+        dy = 0; dx = 1;
       }
     });
 
     retryBtn.addEventListener('click', startGame);
-
-    startGame(); // initial game start
+    startGame();
   </script>
 </body>
 </html>
